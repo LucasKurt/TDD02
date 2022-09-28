@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.devsuperior.bds02.dto.EventDTO;
+
 @Entity
 @Table(name = "tb_event")
 public class Event {
@@ -74,5 +76,12 @@ public class Event {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+	
+	public void update(EventDTO dto) {
+		name = dto.getName();
+		date = dto.getDate();
+		url = dto.getUrl();
+		city = new City(dto.getCityId(), name);
 	}
 }
